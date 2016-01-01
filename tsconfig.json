@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "target": "ES6",
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "noEmit": true,
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules",
+    "meteor_core"
+  ]
+}
