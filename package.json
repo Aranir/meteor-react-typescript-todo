@@ -26,6 +26,7 @@
     "node-libs-browser": "^0.5.3",
     "null-loader": "^0.1.1",
     "react": "^0.14.5",
+    "react-dom": "^0.14.5",
     "react-mixin": "^3.0.3",
     "react-transform-catch-errors": "^1.0.1",
     "react-transform-hmr": "^1.0.1",

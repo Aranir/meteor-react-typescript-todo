@@ -1,7 +1,11 @@
 # project custom
-typings
-/webpack/lib
 
+typings/*
+!typings/meteor/meteor-react.d.ts
+webpack/assets/*
+meteor/client/*
+meteor/server/*
+*.iml
 # vs code
 rwc-report.html
 *.swp
@@ -13,12 +17,6 @@ tests/*.js
 tests/*.js.map
 tests/*.d.ts
 *.config
-scripts/debug.bat
-scripts/run.bat
-scripts/word2md.js
-scripts/ior.js
-scripts/*.js.map
-scripts/typings/
 coverage/
 internal/
 **/.DS_Store
@@ -83,3 +81,4 @@ node_modules
 .node_repl_history
 
 .idea
+node
