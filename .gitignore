@@ -3,8 +3,6 @@
 typings/*
 !typings/meteor/meteor-react.d.ts
 webpack/assets/*
-meteor/client/*
-meteor/server/*
 *.iml
 # vs code
 rwc-report.html
