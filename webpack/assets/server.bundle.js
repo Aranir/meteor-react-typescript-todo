@@ -746,6 +746,8 @@ var require = Npm.require;
 	var _simplestTodosReact = __webpack_require__(/*! collections/simplest-todos-react */ 3);
 	
 	console.log("hello");
+	//The () => function declaration can't be used here as we need
+	//*this* to be modified inside the function
 	Meteor.publish('tasks', function () {
 	    console.log("Current server user: " + this.userId);
 	    return _simplestTodosReact.Tasks.find({

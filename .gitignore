@@ -1,6 +1,7 @@
 # project custom
-typings
-/webpack/lib
+
+typings/*
+!typings/meteor/meteor-react.d.ts
 
 # vs code
 rwc-report.html
@@ -13,12 +14,6 @@ tests/*.js
 tests/*.js.map
 tests/*.d.ts
 *.config
-scripts/debug.bat
-scripts/run.bat
-scripts/word2md.js
-scripts/ior.js
-scripts/*.js.map
-scripts/typings/
 coverage/
 internal/
 **/.DS_Store
