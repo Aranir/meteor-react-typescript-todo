@@ -1,16 +1,12 @@
-/// <reference path="../../../typings/meteor/meteor-react.d.ts"/>
-
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as reactMixin from 'react-mixin';
 import TaskComponent from 'client/components/TaskComponent';
 import BlazeTemplate from './BlazeTemplate';
-//import {Template} from '../globals';
 import './App.css';
 import './simplest-todo-react.css';
 import {Task, Tasks} from 'collections/simplest-todos-react';
 import {TaskCalls} from "../../global";
-//import Template = Blaze.Template;
 
 Meteor.call('sayHello', function (err, res) {
     console.log(res);
