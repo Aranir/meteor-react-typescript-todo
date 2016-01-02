@@ -1,7 +1,11 @@
 export interface Task {
-    _id: number;
+    _id?: String;
     text: string;
-    someOtherStuff: String;
+    createdAt: Date;
+    checked: boolean;
+    owner: string;
+    username: string;
+    private: boolean;
 }
 
-export const Tasks = new Mongo.Collection('tasks');
+export const Tasks = new Mongo.Collection<Task>('tasks');

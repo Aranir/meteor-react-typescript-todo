@@ -741,18 +741,57 @@ var require = Npm.require;
   \******************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	var _simplestTodosReact = __webpack_require__(/*! collections/simplest-todos-react */ 3);
 	
 	console.log("hello");
-	if (!_simplestTodosReact.Tasks.find().fetch().length) {
-	    var task = { text: "hello" };
-	    var t1 = new Task();
-	    t1.text = "Cats";
-	    _simplestTodosReact.Tasks.insert(task);
-	    console.log("we needed to enter some tasks");
-	}
+	Meteor.publish('tasks', function () {
+	    console.log("Current server user: " + this.userId);
+	    return _simplestTodosReact.Tasks.find({
+	        $or: [{
+	            private: { $ne: true } }, { owner: this.userId }]
+	    });
+	});
+	Meteor.methods({
+	    addTask: function addTask(text) {
+	        // Make sure the user is logged in before inserting a task
+	        if (!Meteor.userId()) {
+	            throw new Meteor.Error("not-authorized");
+	        }
+	        _simplestTodosReact.Tasks.insert({
+	            text: text,
+	            createdAt: new Date(),
+	            owner: Meteor.userId(),
+	            checked: false,
+	            username: Meteor.user().username,
+	            private: false
+	        });
+	    },
+	    removeTask: function removeTask(taskId) {
+	        var task = _simplestTodosReact.Tasks.findOne(taskId);
+	        if (task.private && task.owner !== Meteor.userId()) {
+	            // If the task is private, make sure only the owner can delete it
+	            throw new Meteor.Error("not-authorized");
+	        }
+	        _simplestTodosReact.Tasks.remove(taskId);
+	    },
+	    setChecked: function setChecked(taskId, _setChecked) {
+	        var task = _simplestTodosReact.Tasks.findOne(taskId);
+	        if (task.private && task.owner !== Meteor.userId()) {
+	            // If the task is private, make sure only the owner can check it off
+	            throw new Meteor.Error("not-authorized");
+	        }
+	        _simplestTodosReact.Tasks.update(taskId, { $set: { checked: _setChecked } });
+	    },
+	    setPrivate: function setPrivate(taskId, setToPrivate) {
+	        var task = _simplestTodosReact.Tasks.findOne(taskId);
+	        if (task.owner !== Meteor.userId()) {
+	            throw new Meteor.Error("not-authorized");
+	        }
+	        _simplestTodosReact.Tasks.update(taskId, { $set: { private: setToPrivate } });
+	    }
+	});
 
 /***/ },
 /* 3 */

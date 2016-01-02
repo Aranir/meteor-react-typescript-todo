@@ -1,59 +1,130 @@
 /// <reference path="../../../typings/meteor/meteor-react.d.ts"/>
 
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as reactMixin from 'react-mixin';
 import TaskComponent from 'client/components/TaskComponent';
-//import BlazeTemplate from './BlazeTemplate';
+import BlazeTemplate from './BlazeTemplate';
 //import {Template} from '../globals';
 import './App.css';
 import './simplest-todo-react.css';
 import {Task, Tasks} from 'collections/simplest-todos-react';
+import {TaskCalls} from "../../global";
+//import Template = Blaze.Template;
 
-Meteor.call('sayHello', function(err, res) {
-  console.log(res);
+Meteor.call('sayHello', function (err, res) {
+    console.log(res);
 });
+
+
+interface AppState {
+    hideCompleted;
+}
 
 interface  Data {
     tasks: Array<Task>;
+    incompleteCount: number;
+    currentUser: Meteor.User;
 }
 
-@reactMixin.decorate(ReactMeteorData)
-export default class App extends React.Component<any, any> {
 
-    data: Data;
+@reactMixin.decorate(ReactMeteorData)
+export default class App extends React.Component<any, AppState> {
+
+    data:Data;
+
+    constructor(props:any) {
+        super(props);
+        this.state = {hideCompleted: false};
+    }
 
     getMeteorData() {
+        let query = {};
+
+        if (this.state.hideCompleted) {
+            query = {checked: {$ne: true}};
+        }
         return {
-            tasks: Tasks.find().fetch()
+            tasks: Tasks.find(query, {sort: {createdAt: -1}}).fetch(),
+            incompleteCount: Tasks.find(query).count(),
+            currentUser: Meteor.user()
         };
     }
 
-    getTasks() {
-        return [
-            { _id: 1, text: "This is task 1" },
-            { _id: 2, text: "This is task 2" },
-            { _id: 3, text: "This is task 3" }
-        ];
-    }
-
     renderTasks() {
-        return this.data.tasks.map((task) => {
-            return <TaskComponent _id={task._id} text={task.text} />;
+        return this.data.tasks.map((task: Task) => {
+            const currentUserId = this.data.currentUser && this.data.currentUser._id;
+            const showPrivateButton = task.owner === currentUserId;
+
+            return <TaskComponent
+                key={task._id}
+                task={task}
+                showPrivateButton={showPrivateButton}
+            />;
         });
     }
 
-  render() {
-      return (
-          <div className="container">
-              <header>
-                  <h1>Todo List</h1>
-              </header>
+    handleSubmit(event) {
+        event.preventDefault();
 
-              <ul>
-                  {this.renderTasks()}
-              </ul>
-          </div>
-      );
-  }
+        // Find the text field via the React ref
+        let element:HTMLInputElement = ReactDOM.findDOMNode<HTMLInputElement>(this.refs['textInput']);
+        var text = element.value.trim();
+        Meteor.call(TaskCalls.ADD_TASK, text);
+
+        // Clear form
+        element.value = "";
+    }
+
+    toggleHideCompleted() {
+        this.setState({
+            hideCompleted: !this.state.hideCompleted
+        });
+    }
+
+    render() {
+        var template = window['Template'];
+        return (
+
+            <div className="container">
+                <BlazeTemplate template={template.loginButtons}/>
+
+                <header>
+                    <h1>Todo List ({this.data.incompleteCount})</h1>
+                </header>
+
+
+                <label className="hide-completed">
+                    <input
+                        type="checkbox"
+                        readOnly={true}
+                        checked={this.state.hideCompleted}
+                        onClick={this.toggleHideCompleted.bind(this)}/>
+                    Hide Completed Tasks
+                </label>
+                { this.data.currentUser ? (
+                    this.createTaskForm()
+                    ) : null }
+
+
+
+                <ul>
+                    {this.renderTasks()}
+                </ul>
+            </div>
+        );
+    }
+
+    private createTaskForm() {
+        return (
+            <form className="new-task" onSubmit={this.handleSubmit.bind(this)}>
+                <input
+                    type="text"
+                    ref="textInput"
+                    placeholder="Type to add new tasks"/>
+            </form>
+        );
+    }
+
 }
 
