@@ -2,6 +2,10 @@
   "name": "simplest-todo",
   "version": "0.0.1",
   "description": "Simple skeleton for meteor todo app with react and typescript",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Aranir/meteor-react-typescript-todo.git"
+  },
   "scripts": {
     "start": "node dev.js"
   },

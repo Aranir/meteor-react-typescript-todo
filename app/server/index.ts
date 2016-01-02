@@ -1,6 +1,6 @@
 import {Task, Tasks} from 'collections/simplest-todos-react';
 
-console.log("hello");
+console.log("server is running");
 
 //The () => function declaration can't be used here as we need
 //*this* to be modified inside the function
