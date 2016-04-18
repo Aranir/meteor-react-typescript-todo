@@ -5,7 +5,7 @@ import './App.css';
 import {TaskCalls} from "../../global";
 
 class TaskProps {
-    public key: String;
+    public key: string;
     public task: Task;
     public showPrivateButton: boolean;
 }

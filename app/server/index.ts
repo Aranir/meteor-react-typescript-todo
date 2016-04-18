@@ -1,4 +1,4 @@
-import {Task, Tasks} from 'collections/simplest-todos-react';
+import {Task, Tasks} from '../collections/simplest-todos-react';
 
 console.log("server is running");
 

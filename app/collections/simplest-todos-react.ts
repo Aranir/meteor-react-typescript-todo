@@ -1,5 +1,5 @@
 export interface Task {
-    _id?: String;
+    _id?: string;
     text: string;
     createdAt: Date;
     checked: boolean;

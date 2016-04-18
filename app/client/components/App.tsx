@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as reactMixin from 'react-mixin';
-import TaskComponent from 'client/components/TaskComponent';
+import TaskComponent from './TaskComponent';
 import BlazeTemplate from './BlazeTemplate';
 import './App.css';
 import './simplest-todo-react.css';
-import {Task, Tasks} from 'collections/simplest-todos-react';
+import {Task, Tasks} from './../../collections/simplest-todos-react';
 import {TaskCalls} from "../../global";
 
 Meteor.call('sayHello', function (err, res) {

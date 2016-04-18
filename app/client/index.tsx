@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import App from 'client/components/App';
+import App from './components/App';
 
 console.log('Running on client only');
 

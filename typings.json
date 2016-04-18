@@ -1,0 +1,23 @@
+{
+  "name": "simplest-todo",
+  "version": false,
+  "ambientDependencies": {
+    "classnames": "github:DefinitelyTyped/DefinitelyTyped/classnames/classnames.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
+    "react-mixin": "github:DefinitelyTyped/DefinitelyTyped/react-mixin/react-mixin.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
+    "react": "github:DefinitelyTyped/DefinitelyTyped/react/react.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "lodash": "github:DefinitelyTyped/DefinitelyTyped/lodash/lodash.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
+    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
+    "react-global": "github:DefinitelyTyped/DefinitelyTyped/react/react-global.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "react-addons-create-fragment": "github:DefinitelyTyped/DefinitelyTyped/react/react-addons-create-fragment.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "react-addons-css-transition-group": "github:DefinitelyTyped/DefinitelyTyped/react/react-addons-css-transition-group.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "react-addons-transition-group": "github:DefinitelyTyped/DefinitelyTyped/react/react-addons-transition-group.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "react-addons-perf": "github:DefinitelyTyped/DefinitelyTyped/react/react-addons-perf.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "react-addons-linked-state-mixin": "github:DefinitelyTyped/DefinitelyTyped/react/react-addons-linked-state-mixin.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "react-addons-pure-render-mixin": "github:DefinitelyTyped/DefinitelyTyped/react/react-addons-pure-render-mixin.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "react-addons-test-utils": "github:DefinitelyTyped/DefinitelyTyped/react/react-addons-test-utils.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "react-addons-update": "github:DefinitelyTyped/DefinitelyTyped/react/react-addons-update.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "react-dom": "github:DefinitelyTyped/DefinitelyTyped/react/react-dom.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "meteor": "github:DefinitelyTyped/DefinitelyTyped/meteor/meteor.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a"
+  }
+}
