@@ -22,7 +22,7 @@ while still trying to give a pleasant development experience
 ```sh
 git clone https://github.com/Aranir/meteor-react-typescript-todo.git
 cd meteor-react-typescript-todo
-tsd install && npm install
+typings install
 npm start
 ```
 
