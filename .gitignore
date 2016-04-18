@@ -1,7 +1,9 @@
 # project custom
 
+
 typings/*
-!typings/meteor/meteor-react.d.ts
+!typings/meteor/
+
 webpack/assets/*
 *.iml
 # vs code
